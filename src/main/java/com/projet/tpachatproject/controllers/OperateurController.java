@@ -4,6 +4,7 @@ package com.projet.tpachatproject.controllers;
 import com.projet.tpachatproject.entities.Operateur;
 import com.projet.tpachatproject.services.IOperateurService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,9 @@ import java.util.List;
 @Tag(name = "Gestion des opérateurs")
 @RequestMapping("/operateur")
 @CrossOrigin("*")
+@AllArgsConstructor
 public class OperateurController {
 
-	@Autowired
 	IOperateurService operateurService;
 	
 	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs

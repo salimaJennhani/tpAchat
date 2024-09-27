@@ -5,6 +5,7 @@ import com.projet.tpachatproject.entities.SecteurActivite;
 import com.projet.tpachatproject.services.ISecteurActiviteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Tag(name ="Gestion des secteurs activites")
 @RequestMapping("/secteurActivite")
 @CrossOrigin("*")
+@AllArgsConstructor
 public class SecteurActiviteController {
 
 
