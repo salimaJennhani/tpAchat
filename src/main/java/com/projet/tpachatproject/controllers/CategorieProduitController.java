@@ -4,12 +4,13 @@ package com.projet.tpachatproject.controllers;
 import com.projet.tpachatproject.entities.CategorieProduit;
 import com.projet.tpachatproject.services.ICategorieProduitService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-
+@Tag(name="gestions des categories")
 @RequestMapping("/categorieProduit")
 public class CategorieProduitController {
 
