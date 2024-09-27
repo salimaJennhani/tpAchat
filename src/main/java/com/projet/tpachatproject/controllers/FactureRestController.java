@@ -4,6 +4,7 @@ package com.projet.tpachatproject.controllers;
 import com.projet.tpachatproject.entities.Facture;
 import com.projet.tpachatproject.services.IFactureService;
 
+import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,9 @@ import java.util.List;
 
 
 @RestController
-
 @RequestMapping("/facture")
 @CrossOrigin("*")
+@AllArgsConstructor
 public class FactureRestController {
 
 

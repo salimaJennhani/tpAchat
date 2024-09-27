@@ -6,6 +6,7 @@ import com.projet.tpachatproject.services.IProduitService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @CrossOrigin("*")
 @Tag(name= "Gestion des produits")
 @RequestMapping("/produit")
+@AllArgsConstructor
 public class ProduitRestController {
 
 

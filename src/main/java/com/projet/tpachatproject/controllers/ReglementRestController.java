@@ -5,6 +5,7 @@ import com.projet.tpachatproject.entities.Reglement;
 import com.projet.tpachatproject.services.IReglementService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Tag(name="Gestion des reglements")
 @RequestMapping("/reglement")
 @CrossOrigin("*")
+@AllArgsConstructor
 public class ReglementRestController {
 
 
