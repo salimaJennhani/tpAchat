@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/facture")
-@Tag(name = "Gestion des Facturessssssss")
+@Tag(name = "Gestion des Factures" )
 @CrossOrigin("*")
 @AllArgsConstructor
 public class FactureRestController {
