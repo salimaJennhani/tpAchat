@@ -38,13 +38,15 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 
-	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
-		DetailFournisseur df= new DetailFournisseur();//Slave
-		df.setDateDebutCollaboration(new Date()); //util
-		//On affecte le "Slave" au "Master"
-		f.setDetailFournisseur(df);	
-		fournisseurRepository.save(f);
-		return f;
+	public Fournisseur addFournisseur(Fournisseur f) {
+		// Save the DetailFournisseur first
+		DetailFournisseur df = f.getDetailFournisseur();
+		if(df != null) {
+			detailFournisseurRepository.save(df);
+		}
+
+		// Save the Fournisseur
+		return fournisseurRepository.save(f);
 	}
 	
 	private DetailFournisseur saveDetailFournisseur(Fournisseur f){
@@ -73,16 +75,20 @@ public class FournisseurServiceImpl implements IFournisseurService {
 		return fournisseur;
 	}
 
+
 	@Override
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
-        fournisseur.getSecteurActivites().add(secteurActivite);
-        fournisseurRepository.save(fournisseur);
-		
-		
+		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur)
+				.orElseThrow(() -> new RuntimeException("Fournisseur with id " + idFournisseur + " not found"));
+
+		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite)
+				.orElseThrow(() -> new RuntimeException("SecteurActivite with id " + idSecteurActivite + " not found"));
+
+		fournisseur.getSecteurActivites().add(secteurActivite);
+		fournisseurRepository.save(fournisseur);
 	}
 
-	
+
+
 
 }

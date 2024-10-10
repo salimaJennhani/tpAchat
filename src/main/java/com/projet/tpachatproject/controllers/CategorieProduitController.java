@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 public class CategorieProduitController {
 
-
 	ICategorieProduitService categorieProduitService;
 	
 	// http://localhost:8089/SpringMVC/categorieProduit/retrieve-all-categorieProduit
