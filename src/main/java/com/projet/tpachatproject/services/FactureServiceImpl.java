@@ -28,7 +28,10 @@ public class FactureServiceImpl implements IFactureService {
 	ProduitRepository produitRepository;
     @Autowired
     ReglementServiceImpl reglementService;
-	
+
+
+
+
 	@Override
 	public List<Facture> retrieveAllFactures() {
 		List<Facture> factures = (List<Facture>) factureRepository.findAll();
@@ -42,6 +45,7 @@ public class FactureServiceImpl implements IFactureService {
 	public Facture addFacture(Facture f) {
 		return factureRepository.save(f);
 	}
+
 
 	/*
 	 * calculer les montants remise et le montant total d'un détail facture
@@ -111,6 +115,16 @@ public class FactureServiceImpl implements IFactureService {
 		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
 		return pourcentage;
 	}
-	
+
+	public Facture getFactureById(Long factureId) {
+		return factureRepository.findById(factureId).orElse(null);
+	}
+
+
+	public void deleteFacture(Long factureId) {
+		factureRepository.deleteById(factureId);
+	}
+
+
 
 }
