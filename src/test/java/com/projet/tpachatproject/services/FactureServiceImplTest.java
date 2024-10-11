@@ -72,7 +72,7 @@ public class FactureServiceImplTest{
 
         float expectedDiscount = 100f;
         float expectedFinalAmount = 1900f;
-        System.out.println("Expected discount: " + expectedDiscount);
+        System.out.println("Expectedd discount: " + expectedDiscount);
         System.out.println("Actual discount: " + result.getMontantRemise());
         System.out.println("Expected final amount: " + expectedFinalAmount);
         System.out.println("Actual final amount: " + result.getMontantFacture());
