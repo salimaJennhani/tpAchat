@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -121,9 +122,64 @@ public class FactureServiceImpl implements IFactureService {
 	}
 
 
+
 	public void deleteFacture(Long factureId) {
 		factureRepository.deleteById(factureId);
 	}
+
+
+
+	public Facture applySpecialDiscounts(Facture facture) {
+		if (facture == null) {
+			throw new IllegalArgumentException("Facture cannot be null");
+		}
+
+		float currentDiscount = facture.getMontantRemise();
+		float additionalDiscount = 0;
+
+
+		if (facture.getMontantFacture() > 1000) {
+			additionalDiscount += facture.getMontantFacture() * 0.05f;
+		}
+
+
+		if (facture.getDetailsFacture().size() > 5) {
+			additionalDiscount += facture.getMontantFacture() * 0.02f;
+		}
+
+
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(facture.getDateCreationFacture());
+		if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY ||
+				cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+			additionalDiscount += facture.getMontantFacture() * 0.03f;
+		}
+
+
+		boolean hasPremiumProduct = facture.getDetailsFacture().stream()
+				.anyMatch(detail -> detail.getProduit().getCategorieProduit().getLibelleCategorie().equals("PREMIUM"));
+
+		if (hasPremiumProduct) {
+			additionalDiscount -= facture.getMontantFacture() * 0.01f;
+		}
+
+
+
+
+		float totalDiscount = currentDiscount + additionalDiscount;
+		facture.setMontantRemise(totalDiscount);
+		facture.setMontantFacture(facture.getMontantFacture() - additionalDiscount);
+
+		return factureRepository.save(facture);
+	}
+
+
+
+
+
+
+
+
 
 
 
