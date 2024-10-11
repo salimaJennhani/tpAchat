@@ -68,5 +68,39 @@ public class ProduitServiceImpl implements IProduitService {
 
 	}
 
+	public String checkAndUpdateProduitStock(Long idProduit, int quantityToAdd) {
+		Produit produit = produitRepository.findById(idProduit).orElse(null);
+		if (produit == null) {
+			return "Produit not found";
+		}
+
+		Stock stock = produit.getStock();
+		if (stock == null) {
+			return "Produit has no associated stock";
+		}
+
+		int currentQuantity = stock.getQte();
+		int newQuantity = currentQuantity + quantityToAdd;
+
+		if (newQuantity < 0) {
+			return "Cannot remove more items than available in stock";
+		}
+
+		if (newQuantity < stock.getQteMin()) {
+			log.warn("Stock level below minimum for product: " + produit.getLibelleProduit());
+		}
+
+		stock.setQte(newQuantity);
+		stockRepository.save(stock);
+
+		if (newQuantity > stock.getQteMin() * 2) {
+			return "Stock level high";
+		} else if (newQuantity > stock.getQteMin()) {
+			return "Stock level adequate";
+		} else {
+			return "Stock level low";
+		}
+	}
+
 
 }
