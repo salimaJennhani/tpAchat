@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class FactureServiceImplTest {
+public class FactureFournisseurServiceImplTest {
 
 
     @Mock
