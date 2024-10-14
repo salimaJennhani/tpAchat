@@ -30,3 +30,4 @@ public class CategorieProduit implements Serializable {
 	@JsonIgnore
 	private Set<Produit> produits;
 }
+//Testing through this line
