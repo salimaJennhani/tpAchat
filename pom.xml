@@ -117,6 +117,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+
         </plugins>
         <finalName>tpAchatBuild</finalName>
     </build>
