@@ -16,7 +16,6 @@
     <url/>
     <properties>
         <java.version>17</java.version>
-        <sonar.token>squ_ca2be9aed3f942abdc1c75664d39f236c11ae06a</sonar.token>
     </properties>
     <dependencies>
         <dependency>
@@ -117,6 +116,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+
         </plugins>
         <finalName>tpAchatBuild</finalName>
     </build>

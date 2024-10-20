@@ -1,6 +1,6 @@
 package com.projet.tpachatproject.services;
 
-import com.projet.tpachatproject.entities.CategorieProduit;
+
 import com.projet.tpachatproject.entities.Produit;
 import com.projet.tpachatproject.entities.Stock;
 
@@ -93,8 +93,7 @@ public class ProduitServiceImplTest {
 		// Sauvegarder les produits
 		Produit savedProduit1 = produitService.addProduit(produit1);
 		Produit savedProduit2 = produitService.addProduit(produit2);
-		//System.out.println(savedProduit1);
-		//System.out.println(savedProduit2);
+
 
 		List<Produit> produits = produitService.findByStock(savedStock);
 
@@ -124,11 +123,6 @@ public class ProduitServiceImplTest {
 		stock.setQteMin(10);
 		stock.setIdStock(1L);
 
-		// creer une categorie
-		//CategorieProduit categorieProduit = new CategorieProduit();
-		//categorieProduit.setLibelleCategorie("vetement");
-		//categorieProduit.setIdCategorieProduit(1L);
-		//categorieProduit.setCodeCategorie("code 1");
 
 
 		when(stockRepository.save(any(Stock.class))).thenReturn(stock);
