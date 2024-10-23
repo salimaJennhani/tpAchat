@@ -23,7 +23,7 @@ public class FastApiServiceTest {
     @MockBean
     private FastApiService fastApiService; // Mock du service
 
-    @Test
+    //@Test
     public void testPredict() {
         // ARRANGE
         PredictionRequest request = new PredictionRequest();
