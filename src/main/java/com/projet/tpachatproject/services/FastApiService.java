@@ -11,8 +11,7 @@ public class FastApiService {
 
     private final WebClient webClient;
 
-    // URL de votre API FastAPI
-    private final String FASTAPI_URL = "http://localhost:8000/predict";
+    private static final String FASTAPI_URL = "http://localhost:8000/predict";
 
     public FastApiService(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.build();
